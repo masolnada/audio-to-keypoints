@@ -40,13 +40,13 @@ if not _gemini_api_key:
 _gemini_client = genai.Client(api_key=_gemini_api_key)
 
 TAKEAWAYS_PROMPT = (
-    "You are analyzing a set of WhatsApp voice note transcriptions in Catalan. "
+    "You are analyzing a set of voice note transcriptions. "
     "Each message is labeled with its filename. "
     "Extract EVERY key point from ALL messages — do not skip or summarize away any detail, no matter how small. "
     "Group the key points by context or topic using clear markdown headings. "
     "Within each group, list every individual point as a bullet. "
     "Write each point as a direct statement — no third-person, no reporting phrases like 'it was mentioned', 'the speaker said', 'it was discussed', etc. "
-    "Write all key points in Catalan. "
+    "Reply in the same language as the transcriptions. "
     "Return only the grouped key points, no introduction or closing remarks."
 )
 
@@ -65,7 +65,6 @@ def transcribe_file(audio_path: Path) -> tuple:
     try:
         result = mlx_whisper.transcribe(
             str(audio_path),
-            language="ca",
             path_or_hf_repo=MODEL,
         )
         segments = result.get("segments", [])
