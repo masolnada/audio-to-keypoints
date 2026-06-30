@@ -128,7 +128,7 @@ def main() -> None:
     if not AUDIO_DIR.exists():
         AUDIO_DIR.mkdir(parents=True)
         print(f"Directory created: {AUDIO_DIR}")
-        print("Add .opus/.m4a/.wav/.mp3 files to whatsapp_audios/ and run again.")
+        print("Add .opus/.m4a/.wav/.mp3 files to audios/ and run again.")
         sys.exit(0)
 
     audio_files = sorted(
