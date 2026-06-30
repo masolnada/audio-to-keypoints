@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Catalan WhatsApp Voice Note Transcriber
+audio-to-keypoints
 Runs natively on Apple Silicon via mlx-whisper.
 """
 
@@ -89,7 +89,7 @@ def extract_takeaways(transcripts: dict) -> str:
 
 def build_markdown(audio_files, results, generated_at, takeaways: str = ""):
     lines = []
-    lines.append("# WhatsApp Audio Transcriptions")
+    lines.append("# Audio Transcriptions")
     lines.append(f"*Date: {generated_at.strftime('%Y-%m-%d %H:%M:%S')}*")
     lines.append("")
     lines.append("| # | Audio File | Status |")
