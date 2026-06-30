@@ -1,6 +1,6 @@
-# Catalan WhatsApp Audio Transcriber
+# audio-to-keypoints
 
-Transcribes WhatsApp voice notes in Catalan natively on Apple Silicon M4 using `mlx-whisper`, then cleans up the text and extracts key points via Google Gemini.
+Transcribes Catalan voice notes natively on Apple Silicon M4 using `mlx-whisper`, then extracts key points grouped by context via Google Gemini.
 
 ---
 
