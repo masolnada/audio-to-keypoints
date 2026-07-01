@@ -20,6 +20,18 @@ python3 --version
 
 ---
 
+## Hermes Agent skill
+
+Install directly from GitHub using [Hermes Agent](https://hermes-agent.nousresearch.com):
+
+```bash
+hermes skills install masolnada/audio-to-keypoints-skill
+```
+
+Once installed, Hermes will automatically transcribe any audio file you send it in chat and reply with the extracted key points.
+
+---
+
 ## Installation
 
 ```bash
