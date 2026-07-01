@@ -1,7 +1,7 @@
 ---
 name: audio-to-keypoints-skill
 description: "Transcribe voice notes and extract grouped key points (Apple Silicon)."
-version: 1.0.0
+version: 1.1.0
 platforms: [macos]
 metadata:
   hermes:
