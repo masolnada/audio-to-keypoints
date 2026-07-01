@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-audio-to-keypoints
+audio-to-keypoints-skill
 Runs natively on Apple Silicon via mlx-whisper.
 """
 

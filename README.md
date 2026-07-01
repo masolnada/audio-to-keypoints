@@ -1,4 +1,4 @@
-# audio-to-keypoints
+# audio-to-keypoints-skill
 
 Transcribes voice notes natively on Apple Silicon using `mlx-whisper`, then extracts key points grouped by context via Google Gemini. Language is auto-detected from the audio.
 
@@ -24,7 +24,7 @@ python3 --version
 
 ```bash
 # Clone or unzip the project and enter the directory
-cd audio-to-keypoints
+cd audio-to-keypoints-skill
 
 # Create a virtual environment (recommended)
 python3 -m venv .venv
@@ -74,7 +74,7 @@ MODEL = "mlx-community/whisper-large-v3-turbo"
 ## Project structure
 
 ```
-audio-to-keypoints/
+audio-to-keypoints-skill/
 ├── audios/             ← input files (.opus / .m4a / …)
 ├── transcripts/        ← generated Markdown output
 ├── transcriber.py      ← main script

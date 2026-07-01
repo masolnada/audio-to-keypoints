@@ -1,5 +1,5 @@
 ---
-name: audio-to-keypoints
+name: audio-to-keypoints-skill
 description: "Transcribe voice notes and extract grouped key points (Apple Silicon)."
 version: 1.0.0
 platforms: [macos]
@@ -13,8 +13,8 @@ metadata:
 
 Transcribes voice notes locally on Apple Silicon using `mlx-whisper`, then extracts key points grouped by topic via Google Gemini. Language is auto-detected.
 
-**Project directory:** `~/audio-to-keypoints/`
-**Source:** `https://github.com/masolnada/audio-to-keypoints`
+**Project directory:** `~/audio-to-keypoints-skill/`
+**Source:** `https://github.com/masolnada/audio-to-keypoints-skill`
 
 ## Requirements
 
@@ -29,16 +29,16 @@ Run these steps once before the first transcription. Skip any step already done.
 
 ```bash
 # 1. Clone the project
-git clone https://github.com/masolnada/audio-to-keypoints.git ~/audio-to-keypoints
+git clone https://github.com/masolnada/audio-to-keypoints-skill.git ~/audio-to-keypoints-skill
 
 # 2. Create the virtual environment and install dependencies
-cd ~/audio-to-keypoints
+cd ~/audio-to-keypoints-skill
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
 # 3. Configure your Gemini API key
-echo "GEMINI_API_KEY=your-key-here" > ~/audio-to-keypoints/.env
+echo "GEMINI_API_KEY=your-key-here" > ~/audio-to-keypoints-skill/.env
 ```
 
 Get a free Gemini API key at https://aistudio.google.com/apikey
@@ -61,25 +61,25 @@ Resolve all file paths the user mentioned. If a path is ambiguous, use `find` or
 Clear any leftover files from the previous run, then copy the user's files in:
 
 ```bash
-rm -f ~/audio-to-keypoints/audios/*
-cp <source_file> ~/audio-to-keypoints/audios/
+rm -f ~/audio-to-keypoints-skill/audios/*
+cp <source_file> ~/audio-to-keypoints-skill/audios/
 ```
 
 ### Step 3: Run the transcriber
 
 ```bash
-cd ~/audio-to-keypoints && source .venv/bin/activate && python transcriber.py
+cd ~/audio-to-keypoints-skill && source .venv/bin/activate && python transcriber.py
 ```
 
 The script will:
 1. Transcribe each file locally with mlx-whisper (downloads ~250 MB model on first run)
 2. Send transcripts to `gemini-2.5-flash` for key point extraction
-3. Write output to `~/audio-to-keypoints/transcripts/transcriptions_YYYYMMDD_HHMMSS.md`
+3. Write output to `~/audio-to-keypoints-skill/transcripts/transcriptions_YYYYMMDD_HHMMSS.md`
 
 ### Step 4: Present the output
 
 ```bash
-cat "$(ls -t ~/audio-to-keypoints/transcripts/*.md | head -1)"
+cat "$(ls -t ~/audio-to-keypoints-skill/transcripts/*.md | head -1)"
 ```
 
 Present the **Key Points** section to the user. Include the raw timestamped transcription only if they ask for it.
@@ -88,8 +88,8 @@ Present the **Key Points** section to the user. Include the raw timestamped tran
 
 | Error | Fix |
 |-------|-----|
-| `mlx-whisper not found` | `cd ~/audio-to-keypoints && source .venv/bin/activate && pip install -r requirements.txt` |
-| `GEMINI_API_KEY not set` | Confirm `~/audio-to-keypoints/.env` contains `GEMINI_API_KEY=<key>` |
+| `mlx-whisper not found` | `cd ~/audio-to-keypoints-skill && source .venv/bin/activate && pip install -r requirements.txt` |
+| `GEMINI_API_KEY not set` | Confirm `~/audio-to-keypoints-skill/.env` contains `GEMINI_API_KEY=<key>` |
 | `ffmpeg not found` | `brew install ffmpeg` |
 | No audio files detected | Only `.opus`, `.m4a`, `.wav`, `.mp3` are supported |
 | Model download (~250 MB) | Normal on first run — wait for it |
