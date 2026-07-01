@@ -43,18 +43,26 @@ echo "GEMINI_API_KEY=your-key-here" > ~/audio-to-keypoints-skill/.env
 
 Get a free Gemini API key at https://aistudio.google.com/apikey
 
+## Trigger
+
+Activate this skill whenever:
+- An audio file is attached to an incoming message (any chat: Telegram, WhatsApp, etc.)
+- The user explicitly asks to transcribe or extract key points from an audio file
+
 ## Inputs
 
-The user provides one or more audio files (`.opus`, `.m4a`, `.wav`, `.mp3`). They may:
-- Give an explicit file path
-- Describe a location (e.g. "the voice note I just recorded in ~/Downloads")
-- Mention a filename by name
+Audio files arrive in one of two ways:
+1. **Chat attachment** — Hermes receives the file from an incoming message; use the local path provided by the gateway directly
+2. **User reference** — the user gives an explicit path, describes a location (e.g. "the voice note in ~/Downloads"), or mentions a filename by name
+
+Supported formats: `.opus`, `.m4a`, `.wav`, `.mp3`
 
 ## Workflow
 
 ### Step 1: Locate the audio files
 
-Resolve all file paths the user mentioned. If a path is ambiguous, use `find` or `ls` to locate it.
+- If the message included an audio attachment, use its local path directly — no search needed
+- Otherwise, resolve the path the user described; use `find` or `ls` if ambiguous
 
 ### Step 2: Copy files to the audios/ directory
 
